@@ -13,17 +13,19 @@ function audioPlayer() {
         trackName.setAttribute('id', 'playerContainer');
         /*trackName.innerHTML = track['title'];*/
         /*audioPlace.insertAdjacentHTML('beforeBegin',trackName);*/
+        let song  = new Audio(track['track']);
+        song.controls = true;
         trackName.innerHTML = `<div>
                                     <div> Title : ${track['title']} </div>
                                     <div> Artist: ${track['artist']} </div>
                                     <div> Size :${track['size']} </div>
                                     <div> Type :${track['type']} </div>
                                     <audio id="pluginPlayer" src="${track['track']}" loop autoplay="false"></audio>
-                                    <button id="play">Play </button>
-                                    <button id="pause">Pause</button>
-                                    <button id="Stop">Stop</button>
-                                    <button id="Forward">Forw</button>
-                                    <button id="Backward">Backw</button>
+                                    <button id="play" >Play </button>
+                                    <button id="pause" >Pause</button>
+                                    <button id="stop">Stop</button>
+                                    <button id="forward">Forw</button>
+                                    <button id="backward">Backw</button>
                                </div>
                             <!--<div> 
                               <button onclick="document.getElementById('pluginPlayer').play()">Play</button> 
@@ -32,13 +34,23 @@ function audioPlayer() {
                               <button onclick="document.getElementById('pluginPlayer').volume -= 0.1">Vol- </button> 
                             </div>-->`;
         audioPlace[0].replaceWith(trackName);
-        let song  = new Audio(track['track']);
-        song.controls = true;
-        //document.body.append(trackName);
 
+        //document.body.append(trackName);
+        const player = document.getElementById('pluginPlayer')
+        const playTrack = document.getElementById('play');
+        const pauseTrack = document.getElementById('pause');
+        const stopTrack = document.getElementById('stop');
+
+        playTrack.addEventListener('click', ()=>player.play());
+        pauseTrack.addEventListener('click', ()=>player.pause());
+        stopTrack.addEventListener('click', ()=> {
+            player.pause();
+            player.currentTime = 0;
+        });
 
 
     }
     dataFromServer()
+
 }
 audioPlayer();
