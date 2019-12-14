@@ -1,0 +1,10 @@
+.playerContainer {
+    max-width: min-content;
+    position: fixed;
+    x: 10px;
+    margin: auto;
+    display: flex;
+    align-content: center;
+    text-align: center;
+}
+
