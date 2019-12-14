@@ -32,7 +32,8 @@ function audioPlayer() {
                               <button onclick="document.getElementById('pluginPlayer').volume -= 0.1">Vol- </button> 
                             </div>-->`;
         audioPlace[0].replaceWith(trackName);
-
+        let song  = new Audio(track['track']);
+        song.controls = true;
         //document.body.append(trackName);
 
 
